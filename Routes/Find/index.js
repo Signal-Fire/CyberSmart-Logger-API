@@ -36,6 +36,6 @@ route.get('/:id', function(req, res) {
     } catch (ex) {
         res.status(500).send("{ error : " + ex + " }");
     }
-})
+});
 
 module.exports = route;
