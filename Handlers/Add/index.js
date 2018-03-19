@@ -5,7 +5,9 @@ class Add {
     }
 
     CreateLog(log) {
-        
+        return new Promise(function(resolve, reject) {
+
+        });
     }
 }
 

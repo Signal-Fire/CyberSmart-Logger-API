@@ -37,13 +37,13 @@ CyberSmart is a system designed to control and manage locations within your home
 ##### route.post('/create', function(req, res)
 This route posts data to the Creater handler. It can take up to three parameters.
 The parameters are:
-* `Message`
+* `message`
     - `String`
     - `Required`
-* `CreatedByUser`
+* `created_by_user`
     - `String`
     - `Required`
-* `Timestamp`
+* `timestamp`
     - `Date`
     - `Default` : `Date.now`
 The possible returns are:
