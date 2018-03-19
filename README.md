@@ -56,7 +56,7 @@ The possible returns are:
 This route returns all logs. It takes no parameters. 
 The possible returns are:
 * `200 - OK` : This means the request was successful. It should return an array of JSON Objects with all logs in the given log.
-* `404 - Not Found` : This means the request failed or no logs were found in the location.
+* `404 - Not Found` : This means the request failed or no logs were found in the database.
 * `500 - Server Error` : This means something went wrong with the function being called in the controller.
 
 ##### route.get('/:id', function(req, res) 
@@ -73,13 +73,18 @@ The possible returns are:
 * `404 - Not Found` : This means the request failed or no logs have been created by the user.
 * `500 - Server Error` : This means something went wrong with the function being called in the controller.
 
-#### Insert
 #### Delete
-##### route.post('/delete', function(req, res) 
-This route calls the delete Location function in the Delete handler. The possible parameters are:
-* `_id` : The ID of the Location being deleted
+##### route.post('/:id', function(req, res) 
+This route calls the DeleteById function in the Delete handler. The possible parameters are:
+* `/<id>` : The ID of the log being deleted
 The possible returns are:
-* `200 - OK` - The function executed successfully, resulting in the deletion of a Location.
+* `200 - OK` - The function executed successfully, resulting in the deletion of a log.
+* `401 - Unauthorized` : This means the request was unauthorized, meaning something went wrong.
+* `500 - Server Error` : This means something went wrong with the delete function, resulting in a server crash.
+
+##### route.post('/all', function(req, res) 
+This route calls the DeletAll function in the Delete handler. It takes no parameters. Use this route with care!
+* `200 - OK` - The function executed successfully, resulting in the deletion of a log.
 * `401 - Unauthorized` : This means the request was unauthorized, meaning something went wrong.
 * `500 - Server Error` : This means something went wrong with the delete function, resulting in a server crash.
 
@@ -106,12 +111,10 @@ This method adds a log to the database, given a log object. The Log object is th
 If it fails to add a Log to the database, the request is rejected and the method fails.
 If the request succeeds, it will return the created Log.
 
-#### Update
-##### UpdateStateById(id, state)
-This method finds a Location given an ID and updates the state. If no Location is found or an error occurs, the request is rejected.
-If the request succeeds, it will return the Location matching the given ID and its updated state.
-
 #### Delete
-##### Location(id)
-This method finds a Location given an ID and deletes it. If there is an error during execution or the result is null, the method fails and is rejected.
-If the method executes correctly, it sets active to false on the given Location.
+##### DeleteAll()
+This method deletes all logs in the database.
+
+##### DeleteById(id)
+This method finds a log given an ID and deletes it. If there is an error during execution or the result is null, the method fails and is rejected.
+If the method executes correctly, it sets active to false on the given log.
