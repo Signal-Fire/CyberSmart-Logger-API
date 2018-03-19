@@ -47,45 +47,31 @@ The parameters are:
     - `Date`
     - `Default` : `Date.now`
 The possible returns are:
-* `200 - OK` : This means the request was successful. It should return an array of JSON Objects with all Locations in the database. 
-* `404 - Not Found` : This means the request failed or no Locations were found.
+* `200 - OK` : This means the request was successful, and should return the log created.
+* `401 - Bad Request` : This means the request failed and a log was not created.
 * `500 - Server Error` : This means something went wrong with the function being called in the controller.
 
-##### route.get('/location', function(req, res)
-This route returns all Locations within a given location. It takes one parameter, Location name. 
+#### Find
+##### route.get('/all', function(req, res)
+This route returns all logs. It takes no parameters. 
 The possible returns are:
-* `200 - OK` : This means the request was successful. It should return an array of JSON Objects with all Locations in the given location.
-* `404 - Not Found` : This means the request failed or no Locations were found in the location.
+* `200 - OK` : This means the request was successful. It should return an array of JSON Objects with all logs in the given log.
+* `404 - Not Found` : This means the request failed or no logs were found in the location.
 * `500 - Server Error` : This means something went wrong with the function being called in the controller.
 
 ##### route.get('/:id', function(req, res) 
-This route finds a Location by its ID. It takes on parameter, ID, which must be passed in in the format `/<id>` in the URL.
+This route finds a Log by its ID. It takes on parameter, ID, which must be passed in in the format `/<id>` in the URL.
 The possible returns are:
-* `200 - OK` : This means the request was successful. It should return a JSON Object containing information about the Location with the ID requested.
-* `404 - Not Found` : This means the request failed or no Location with the ID requested were found.
+* `200 - OK` : This means the request was successful. It should return a JSON Object containing information about the Log with the ID requested.
+* `404 - Not Found` : This means the request failed or no Log with the ID requested were found.
 * `500 - Server Error` : This means something went wrong with the function being called in the controller.
 
-#### Insert
-##### route.post('/add', function(req, res) 
-This route inserts a new Location into the database. It can take five parameters. These are:
-* `name`:
-    - `String`
-    - `Required`
-* `state`:
-    - `Number`
-    - `Required`
-    - `Default` : `0`
-* `active`:
-    - `Boolean`
-    - `Required`
-    - `Default` : `0`
-* `date_added`:
-    - `Date`
-    - `Default` : Date.now
+##### route.get('/user/:user', function(req, res) 
+This route finds logs created by a user. It takes on parameter, User, which must be passed in in the format `/user/<user>` in the URL.
 The possible returns are:
-* `201 - Created` : This means a new entry was created in the Location table of the database.
-* `401 - Unauthorized` : This means the request was unauthorized and the Location was not inserted into the database.
-* `500 - Server Error` : This means the request failed, resulting in a Server Error.
+* `200 - OK` : This means the request was successful. It should return an array of JSON Objects, containing the logs created by the user.
+* `404 - Not Found` : This means the request failed or no logs have been created by the user.
+* `500 - Server Error` : This means something went wrong with the function being called in the controller.
 
 #### Insert
 #### Delete
@@ -100,18 +86,23 @@ The possible returns are:
 ### Handlers
 #### Find
 ##### FindAll()
-This method searches the database for all Locations. If none found or an error, it rejects the request.
+This method searches the database for all logs. If none found or an error, it rejects the request.
 It takes no parameters.
-If the request succeeds, all Locations in the database will be returned.
+If the request succeeds, all logs in the database will be returned.
 
 ##### FindById(id)
-This method searches the database for any Locations matching the ID of the id parameter.
-If no Locations are found or an error occurs, the request is rejected.
-If the request succeeds, the Location matching that ID will be returned.
+This method searches the database for any logs matching the ID of the id parameter.
+If no logs are found or an error occurs, the request is rejected.
+If the request succeeds, the log matching that ID will be returned.
+
+##### FindByCreatedUser(user)
+This method searches the database for any logs matching the username of the user parameter.
+If no logs are found or an error occurs, the request is rejected.
+If the request succeeds, the log matching that ID will be returned.
 
 #### Add
 ##### CreateLog(Log)
-This method adds a Log to the database, given a Log object. The Log object is then parsed into a newLocation object.
+This method adds a log to the database, given a log object. The Log object is then parsed into a new log object.
 If it fails to add a Log to the database, the request is rejected and the method fails.
 If the request succeeds, it will return the created Log.
 
