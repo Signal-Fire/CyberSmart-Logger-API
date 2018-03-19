@@ -18,7 +18,7 @@ var LogSchema = new Schema({
     },
     timestamp: {
         type: Date,
-        default: Date.no
+        default: Date.now
     }
 });
 

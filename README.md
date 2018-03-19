@@ -109,11 +109,11 @@ This method searches the database for any Locations matching the ID of the id pa
 If no Locations are found or an error occurs, the request is rejected.
 If the request succeeds, the Location matching that ID will be returned.
 
-#### Insert
-##### AddLocation(Location)
-This method adds a Location to the database, given a Location object. The Location object is then parsed into a newLocation object.
-If it fails to add a Location to the database, the request is rejected and the method fails.
-If the request succeeds, it will return the created Location.
+#### Add
+##### CreateLog(Log)
+This method adds a Log to the database, given a Log object. The Log object is then parsed into a newLocation object.
+If it fails to add a Log to the database, the request is rejected and the method fails.
+If the request succeeds, it will return the created Log.
 
 #### Update
 ##### UpdateStateById(id, state)
