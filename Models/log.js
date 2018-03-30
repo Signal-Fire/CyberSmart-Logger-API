@@ -8,6 +8,10 @@ var conn = mongoose.createConnection(config.database);
 var Schema = mongoose.Schema;
 
 var LogSchema = new Schema({
+    log_detail_id : {
+        type : String,
+        default : null
+    },
     message: {
         type: String,
         required: true
