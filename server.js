@@ -7,9 +7,7 @@ var express = require('express'),
     Add_Routes = require('./Routes/Add'),
     Find_Routes = require('./Routes/Find');
 
-app.use(bodyParser.urlencoded({
-    extended : false
-}));
+app.use(bodyParser.json());
 
 app.use(cors());
 app.use(compression());
