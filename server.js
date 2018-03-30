@@ -2,9 +2,14 @@
 var express = require('express'),
     app = express(),
     cors = require('cors'),
+    bodyParser = require('body-parser'),
     compression = require('compression'),
     Add_Routes = require('./Routes/Add'),
     Find_Routes = require('./Routes/Find');
+
+app.use(bodyParser.urlencoded({
+    extended : false
+}));
 
 app.use(cors());
 app.use(compression());

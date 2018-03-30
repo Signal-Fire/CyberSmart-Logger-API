@@ -2,7 +2,7 @@
 var route = require('express').Router();
 var Creator = new(require('../../Handlers/Add'))();
 
-route.post('/create', function(req, res) {
+route.post('/', function(req, res) {
     try {        
         Creator.CreateLog(req.body).then(log => {
             res.status(201).send(log);
