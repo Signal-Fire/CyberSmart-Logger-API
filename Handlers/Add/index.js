@@ -25,7 +25,7 @@ class Add {
             newLog.save(function(err, result) {
                 if (err || result === null)
                     return reject("Unable to save log");
-
+                
                 return resolve(result);
             });
         });
