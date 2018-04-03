@@ -2,6 +2,7 @@
 var express = require('express'),
     app = express(),
     cors = require('cors'),
+    config = require('./Configuration'),
     bodyParser = require('body-parser'),
     compression = require('compression'),
     Add_Routes = require('./Routes/Add'),
@@ -15,8 +16,6 @@ app.use(compression());
 app.use('/find', Find_Routes);
 app.use('/create', Add_Routes);
 
-const port = 8081;
-
-app.listen(port, () => {
-    console.log('[LOGGER] There are ' + port + ' White Walkers on their way! Listen up!');
+app.listen(config.port, () => {
+    console.log('[LOGGER] There are ' + config.port + ' White Walkers on their way! Listen up!');
 });

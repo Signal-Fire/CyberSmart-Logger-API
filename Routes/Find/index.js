@@ -7,10 +7,10 @@ route.get('/all', function(req, res) {
         Finder.FindAll().then(logs => {
             res.status(200).send(logs);
         }).catch(err => {
-            res.status(404).send("{ error : " + err + " }");
+            res.status(400).send({"error" : err });
         });
     } catch (ex) {
-        res.status(500).send("{ error : " + ex + " }");
+        res.status(500).send({ "error" : ex });
     }
 });
 
@@ -19,10 +19,10 @@ route.get('/user/:user', function(req, res) {
         Finder.FindByCreatedUser(req.params.user).then(logs => {
             res.status(200).send(logs);
         }).catch(err => {
-            res.status(404).send("{ error : " + err + " }");
+            res.status(400).send({"error" : err });
         });
     } catch (ex) {
-        res.status(500).send("{ error : " + ex + " }");
+        res.status(500).send({ "error" : ex });
     }
 });
 
@@ -31,10 +31,10 @@ route.get('/:id', function(req, res) {
         Finder.FindById(req.params.id).then(logs => {
             res.status(200).send(logs);
         }).catch(err => {
-            res.status(404).send("{ error : " + err + " }");
+            res.status(400).send({"error" : err });
         });
     } catch (ex) {
-        res.status(500).send("{ error : " + ex + " }");
+        res.status(500).send({ "error" : ex });
     }
 });
 
