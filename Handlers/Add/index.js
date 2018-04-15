@@ -11,7 +11,7 @@ class Add {
             var newLog = new Log(log);
             newLog.save(function(err, result) {
                 if (err || result === null)
-                    return reject("Unable to save log");
+                    return reject(err);
 
                 return resolve(result);
             });

@@ -13,6 +13,12 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(compression());
 
+app.use(bodyParser.json());
+
+app.use(bodyParser.urlencoded({
+    extended : false
+}));
+
 app.use('/find', Find_Routes);
 app.use('/create', Add_Routes);
 
