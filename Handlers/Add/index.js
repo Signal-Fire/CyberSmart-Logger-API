@@ -8,7 +8,6 @@ class Add {
 
     CreateLog(log) {
         return new Promise(function(resolve, reject) {
-            console.log(log);
             var newLog = new Log(log);
             newLog.save(function(err, result) {
                 if (err || result === null)
