@@ -1,4 +1,3 @@
-/* jshint esversion : 6*/
 var Log = require('../../Models/Log');
 
 class Find {
