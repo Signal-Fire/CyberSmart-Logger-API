@@ -1,5 +1,5 @@
-var route = require('express').Router();
-var Creator = new(require('../../Handlers/Add'))();
+var route = require('express').Router(),
+    Creator = new(require('../../Handlers/Add'))();
 
 route.post('/', function(req, res) {
     try {        
@@ -10,6 +10,8 @@ route.post('/', function(req, res) {
         });
     } catch (ex) {
         res.status(500).send({ex : ex});
+    }
+});
 
 route.post('/:id', function(req, res) {
     try {
